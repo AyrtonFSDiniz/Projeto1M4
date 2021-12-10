@@ -24,3 +24,4 @@ export class FilmesService {
     return `This action removes a #${id} filme`;
   }
 }
+//chamar as rotas do create-filme.dto.ts. -> this.prisma.filmes....

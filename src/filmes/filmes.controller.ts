@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FilmesService } from './filmes.service';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
@@ -32,3 +40,4 @@ export class FilmesController {
     return this.filmesService.remove(+id);
   }
 }
+//colocar rotas
