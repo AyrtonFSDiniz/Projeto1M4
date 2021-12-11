@@ -1,26 +1,39 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateGeneroDto } from './dto/create-genero.dto';
 import { UpdateGeneroDto } from './dto/update-genero.dto';
+import { Genero } from './entities/genero.entity';
 
 @Injectable()
 export class GeneroService {
-  create(createGeneroDto: CreateGeneroDto) {
-    return 'This action adds a new genero';
+  constructor(private prisma: PrismaService) {}
+
+  async createPrisma(creategeneroDto: CreateGeneroDto): Promise<Genero> {
+    return await this.prisma.genero.create({
+      data: { ...CreateGeneroDto },
+    });
   }
 
-  findAll() {
-    return `This action returns all genero`;
+  async findAllPrisma(): Promise<Genero[]> {
+    return await this.prisma.genero.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} genero`;
+  async findOnePrisma(id: number): Promise<Genero> {
+    return await this.prisma.genero.findUnique({ where: { id } });
   }
 
-  update(id: number, updateGeneroDto: UpdateGeneroDto) {
-    return `This action updates a #${id} genero`;
+  async updatePrisma(
+    id: number,
+    updateGeneroDto: UpdateGeneroDto,
+  ): Promise<Genero> {
+    return await this.prisma.update({
+      id,
+      updateGeneroDtodata: { ...updateGeneroDto },
+      where: { id },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} genero`;
+  async removeprisma(id: number) {
+    return await this.prisma.delete({ where: { id } });
   }
 }

@@ -1,7 +1,17 @@
+import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+
 export class CreateFilmeDto {
-  nome: string; //colocar as validaçoes
+  id: number;
+  @IsNotEmpty()
+  @IsString()
+  nome: string;
+  @IsUrl()
+  @IsNotEmpty()
   imagem: string;
-  data_lancamento: Date; //string
+  @IsNotEmpty()
+  @IsString()
+  data_lancamento: string;
+  @IsNotEmpty()
+  @IsString()
   tempo_duracao: string;
 }
-//ver se esta tudo igual ao schema.prisma
