@@ -22,41 +22,40 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Instalações
+Antes de mais nada, tenha instalado na sua máquina a versão mais recente do NodeJS, para que todas as dependências sejam instaladas corretamente.
+Também será necessário ter instalado localmente o database Postgresql e colocar no arquivo `.envbkp` os dados do seu banco de dados.
+Prosseguindo, para utilizar a  API, é necessário inicializar via CMD (se você utiliza o VS Code e abre um terminal, por padrão ele abre no PowerShell, só que por ele há grandes chances de dar vários erros de permissão e instalação das dependências do Nest) o comando abaixo:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+``` npm install ```
 
-## Installation
+Este comando irá instalar e atualizar todas as dependências necessárias para rodas a API.
 
-```bash
-$ npm install
-```
+# Rodando a API
 
-## Running the app
+Para iniciar a API rode o seguinte comando:
 
-```bash
-# development
-$ npm run start
+    npx prisma studio
 
-# watch mode
-$ npm run start:dev
+Após ativar esse comando deve-se abrir uma guia do seu navegador padrão contendo os botões para cadastrar as informações de Filmes, Participantes e Gênero.
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
+# Utilizando a API
 
-```bash
-# unit tests
-$ npm run test
+No cadastro de Filmes, existe 6 campos que podemos cadastrar:
 
-# e2e tests
-$ npm run test:e2e
+    nome
+    imagem
+    data_lancamento
+    tempo_duracao
+    genero
+    participante
 
-# test coverage
-$ npm run test:cov
-```
+Para `genero` e `participante` haverá um cadastro a parte para cada um, onde haverá os seguintes campos:
+* genero: nome e filme.
+* participante: nome, imagem, data_nascimento, ator, filme e filmeId.
+
+Para cada rota (Filme, Genero e Participante), será possivel criar, atualizar, buscar e apagar os dados cadastrados.
 
 ## Support
 
