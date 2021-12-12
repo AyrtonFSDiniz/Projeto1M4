@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { GeneroService } from './genero.service';
 import { CreateGeneroDto } from './dto/create-genero.dto';
 import { UpdateGeneroDto } from './dto/update-genero.dto';
@@ -8,27 +16,30 @@ export class GeneroController {
   constructor(private readonly generoService: GeneroService) {}
 
   @Post()
-  create(@Body() createGeneroDto: CreateGeneroDto) {
-    return this.generoService.create(createGeneroDto);
+  async createPrisma(@Body() createGeneroDto: CreateGeneroDto) {
+    return await this.generoService.createPrisma(createGeneroDto);
   }
 
   @Get()
-  findAll() {
-    return this.generoService.findAll();
+  async findAllPrisma() {
+    return await this.generoService.findAllPrisma();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.generoService.findOne(+id);
+  async findOnePrisma(@Param('id') id: string) {
+    return await this.generoService.findOnePrisma(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGeneroDto: UpdateGeneroDto) {
-    return this.generoService.update(+id, updateGeneroDto);
+  async updatePrisma(
+    @Param('id') id: string,
+    @Body() updateGeneroDto: UpdateGeneroDto,
+  ) {
+    return await this.generoService.updatePrisma(+id, updateGeneroDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.generoService.remove(+id);
+  async removePrisma(@Param('id') id: string) {
+    return await this.generoService.removePrisma(+id);
   }
 }

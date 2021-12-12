@@ -13,8 +13,7 @@ datasource db {
 model Genero {
   id    Int     @default(autoincrement()) @id
   nome String
-  genero Filme @relation(fields: [filmeid], references: [id])
-  filmeid Int
+  filme Filme[]
 }
 
 model Filme {

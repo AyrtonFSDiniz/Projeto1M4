@@ -6,11 +6,16 @@ import { Genero } from './entities/genero.entity';
 
 @Injectable()
 export class GeneroService {
+  create: any;
+  findAll: any;
+  findOne: any;
+  update: any;
+  remove: any;
   constructor(private prisma: PrismaService) {}
 
-  async createPrisma(creategeneroDto: CreateGeneroDto): Promise<Genero> {
+  async createPrisma(createGeneroDto: CreateGeneroDto): Promise<Genero> {
     return await this.prisma.genero.create({
-      data: { ...CreateGeneroDto },
+      data: { ...createGeneroDto },
     });
   }
 
@@ -33,7 +38,7 @@ export class GeneroService {
     });
   }
 
-  async removeprisma(id: number) {
+  async removePrisma(id: number) {
     return await this.prisma.delete({ where: { id } });
   }
 }

@@ -1,7 +1,6 @@
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class CreateParticipanteDto {
-  id: number;
   @IsNotEmpty()
   @IsString()
   nome: string;

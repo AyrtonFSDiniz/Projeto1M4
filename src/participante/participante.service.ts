@@ -12,7 +12,7 @@ export class ParticipanteService {
     createParticipanteDto: CreateParticipanteDto,
   ): Promise<Participante> {
     return await this.prisma.participante.create({
-      data: { ...CreateParticipanteDto },
+      data: { ...createParticipanteDto },
     });
   }
 
@@ -35,7 +35,7 @@ export class ParticipanteService {
     });
   }
 
-  async removeprisma(id: number) {
+  async removePrisma(id: number) {
     return await this.prisma.delete({ where: { id } });
   }
 }

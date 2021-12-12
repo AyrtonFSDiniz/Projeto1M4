@@ -26,14 +26,19 @@ export class FilmesService {
     id: number,
     updateFilmeDto: UpdateFilmeDto,
   ): Promise<Filme> {
-    return await this.prisma.update({
-      id,
-      updateFilmeDtodata: { ...updateFilmeDto },
+    const film = {
+      nome: updateFilmeDto.nome,
+      imagem: updateFilmeDto.imagem,
+      data_lancamento: updateFilmeDto.data_lancamento,
+      tempo_duracao: updateFilmeDto.tempo_duracao,
+    };
+    return await this.prisma.filme.update({
+      data: { ...film },
       where: { id },
     });
   }
 
-  async removeprisma(id: number) {
-    return await this.prisma.delete({ where: { id } });
+  async removePrisma(id: number) {
+    return await this.prisma.filme.delete({ where: { id } });
   }
 }

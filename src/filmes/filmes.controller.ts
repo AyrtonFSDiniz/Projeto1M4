@@ -10,34 +10,37 @@ import {
 import { FilmesService } from './filmes.service';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
+import { Filme } from '@prisma/client';
 
 @Controller('filmes')
 export class FilmesController {
   constructor(private readonly filmesService: FilmesService) {}
 
   @Post()
-  create(@Body() createFilmeDto: CreateFilmeDto) {
-    return this.filmesService.create(createFilmeDto);
+  async createPrisma(@Body() data: CreateFilmeDto): Promise<Filme> {
+    return await this.filmesService.createPrisma(data);
   }
 
   @Get()
-  findAll() {
-    return this.filmesService.findAll();
+  async findAllPrisma() {
+    return await this.filmesService.findAllPrisma();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.filmesService.findOne(+id);
+  async findOnePrisma(@Param('id') id: string) {
+    return await this.filmesService.findOnePrisma(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFilmeDto: UpdateFilmeDto) {
-    return this.filmesService.update(+id, updateFilmeDto);
+  async updatePrisma(
+    @Param('id') id: string,
+    @Body() updateFilmeDto: UpdateFilmeDto,
+  ) {
+    return await this.filmesService.updatePrisma(+id, updateFilmeDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.filmesService.remove(+id);
+  async removePrisma(@Param('id') id: string) {
+    return await this.filmesService.removePrisma(+id);
   }
 }
-//colocar rotas
