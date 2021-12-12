@@ -1,4 +1,4 @@
-﻿# API NestJS+Prisma+Postgres
+﻿﻿# API NestJS+Prisma+Postgres
 
 Neste primeiro projeto do módulo 4 de Backend da Blue Ed Tech iremos criar uma API com todo o CRUD atráves do NestJS, onde poderá se cadastrar Filmes, Gêneros e Participantes.
 
@@ -36,5 +36,68 @@ Para `genero` e `participante` haverá um cadastro a parte para cada um, onde ha
 * genero: nome e filme.
 * participante: nome, imagem, data_nascimento, ator, filme e filmeId.
 
-Para cada rota (Filme, Genero e Participante), será possivel criar, atualizar, buscar e apagar os dados cadastrados.
+Para cada rota (Filme, Genero e Participante), será possível criar, atualizar, buscar e apagar os dados cadastrados.
 
+
+
+# Utilizando o Thunder Client
+
+A seguir será mostrado a estrutura dos dados para fazer as requisições utilizando o Thunder Client.
+
+### Rota Get findAll 
+
+Rota ao qual podemos listar todos os dados cadastrados.
+
+### Rota Get findOne 
+
+Rota que apenas seleciona o item específico, com base no id passado no HTTP.
+
+### Rota Post create
+
+Rota que cadastra um novo dado, onde devemos passa-los da seguinte forma:
+
+* Filme
+
+```json
+{
+    "nome":"nomefilme",
+    "imagem":"https://site",
+    "data_lancamento":"12/12/12",
+    "tempo_ducacao": "155 min"
+}
+```
+
+
+
+* Genero
+
+  ```json
+  {
+      "nome":"nomedogenero"
+  }
+  ```
+
+  
+
+  * Participante
+
+  ```json
+  {
+      "nome":"nomedoparticipante",
+      "imagem":"https://site",
+      "data_nascimento":"20/12/1980",
+      "ator":"ator",
+      "filme":"filme",
+      "filmeId":"iddofilme"
+  }
+  ```
+
+  ### Rota Patch update
+
+  Essa rota atualiza a informação. É diferente em relação ao Put no fato de quê com ela é capaz de se atualizar apenas uma das informações da lista cadastrada, ao contrário do Put. necessita do id para funcionar.
+
+  
+
+  ### Rota Delete remove
+
+  Rota responsável por deletar informações. Assim como a rota Patch, também necessita do id para deletar selecionar a informação a ser deletada.
